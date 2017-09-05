@@ -12,9 +12,8 @@ RUN         apk update && \
             apk add --no-cache bash libstdc++ && \
             apk add --no-cache --virtual .build-deps \
               ca-certificates wget openssl unzip && \
-            update-ca-certificates
-
-RUN         mkdir /opt && \
+            update-ca-certificates && \
+            mkdir /opt && \
             cd /tmp && \
             wget -q --show-progress -O kotlin-compiler.zip "https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip" && \
             echo "${KOTLIN_DOWNLOAD_SHA256} *kotlin-compiler.zip" | sha256sum -c - && \
